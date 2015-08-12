@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace JsonEditor {
+    public partial class Form1 : Form {
+
+        List<Data> Datalist;
+
+        #region "formEvent"
+        public Form1() {
+            InitializeComponent();
+            init();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            ListSelectChange();
+        }
+        private void btnAdd_Click(object sender, EventArgs e) {
+            ListAdd();
+        }
+        private void btnRemove_Click(object sender, EventArgs e) {
+            ListRemove();
+        }
+        private void btnRefresh_Click(object sender, EventArgs e) {
+            ListUpdate();
+        }
+
+
+        private void tsmiSave_Click(object sender, EventArgs e) {
+
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK) {
+                System.IO.File.WriteAllText(saveFileDialog1.FileName, GetJson());
+            }
+        }
+        private void tsmiLoad_Click(object sender, EventArgs e) {
+
+
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK) {
+                LoadData(System.IO.File.ReadAllText(openFileDialog1.FileName));
+            }
+        }
+
+        private void tsmiExit_Click(object sender, EventArgs e) {
+            Close();
+        }
+        private void tsmiVersion_Click(object sender, EventArgs e) {
+            AboutBox1 abox = new AboutBox1();
+            abox.ShowDialog();
+        }
+        private void btnUp_Click(object sender, EventArgs e) {
+            ListUp();
+        }
+        private void btnDown_Click(object sender, EventArgs e) {
+            ListDown();
+        }
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == (char)Keys.Enter) {
+                ListUpdate();
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+        /// <summary>listのインスタンス化　ファイルダイアログのフィルター変更 </summary>
+        private void init() {
+            Datalist = new List<Data>();
+
+            saveFileDialog1.Filter = "すべてのファイル(*.*)|*.*";
+            openFileDialog1.Filter = "すべてのファイル(*.*)|*.*";
+        }
+
+        /// <summary> </summary>
+        private void ListSelectChange() {
+            if (listBox1.SelectedIndex < 0) return;
+
+            txtName.Text = listBox1.SelectedItem.ToString();
+
+        }
+
+        /// <summary> </summary>
+        private void ListAdd() {
+            Data newData = (listBox1.SelectedIndex < 0) ? new Data(true) : Datalist[listBox1.SelectedIndex];
+
+            Datalist.Add(newData);
+            listBox1.Items.Add(newData.Name);
+            listBox1.SelectedIndex = listBox1.Items.Count - 1;
+        }
+        /// <summary> </summary>
+        private void ListRemove() {
+            int index = listBox1.SelectedIndex;
+
+            if (index < 0) return;
+
+            Datalist.RemoveAt(index);
+            listBox1.Items.RemoveAt(index);
+            ListUpdate();
+
+
+        }
+        /// <summary> </summary>
+        private void ListUpdate() {
+            int index = listBox1.SelectedIndex;
+
+            if (index < 0) return;
+
+            Datalist[index] = GetEditData();
+            listBox1.Items[index] = txtName.Text;
+        }
+
+        private void ListUp() {
+            if (listBox1.Items.Count < 2) return;
+            int index = listBox1.SelectedIndex;
+            if (index == 0) return;
+
+            object tempItem = listBox1.SelectedItem;
+            listBox1.Items[index] = listBox1.Items[index - 1];
+            listBox1.Items[index - 1] = tempItem;
+            listBox1.SelectedIndex = index - 1;
+        }
+        private void ListDown() {
+            if (listBox1.Items.Count < 2) return;
+            int index = listBox1.SelectedIndex;
+            if (index == listBox1.Items.Count - 1) return;
+
+            object tempItem = listBox1.SelectedItem;
+            listBox1.Items[index] = listBox1.Items[index + 1];
+            listBox1.Items[index + 1] = tempItem;
+
+            listBox1.SelectedIndex = index + 1;
+        }
+
+        /// <summary>フォームの内容からデータを作る</summary>
+        private Data GetEditData() {
+            Data data = new Data();
+            data.Name = txtName.Text;
+            data.Summary = txtSummary.Text;
+            return data;
+        }
+
+        /// <summary>データリストをJson文字列化</summary>
+        /// <returns>DataListをJson化した文字列</returns>
+        private string GetJson() {
+            return LitJson.JsonMapper.ToJson(Datalist);
+        }
+
+        /// <summary>読み込んだ文字列をフォームに反映</summary>
+        /// <param name="json">読み込んだ文字列</param>
+        private void LoadData(string json) {
+            listBox1.Items.Clear();
+            Datalist = LitJson.JsonMapper.ToObject<List<Data>>(json);
+
+            //todo
+            for (int i = 0; i < Datalist.Count; i++) {
+                listBox1.Items.Add(Datalist[i].Name);
+            }
+        }
+
+
+    }
+}
