@@ -64,52 +64,42 @@ namespace JsonEditor {
         }
         #endregion
 
+        #region "変更するところ"
+        private const string FILTER = "データ";
+
+        /// <summary>フォームの内容からデータを作る</summary>
+        private Data GetEditData() {
+            Data data = new Data();
+            data.Name = txtName.Text;
+            data.Summary = txtSummary.Text;
+            return data;
+        }
+        /// <summary>リストボックスで選択中のデータをフォームに反映</summary>
+        private void SetDataForForm() {
+            int index = listBox1.SelectedIndex;
+
+            if (index < 0) return;
+
+            txtName.Text = Datalist[index].Name;
+            txtSummary.Text = Datalist[index].Summary;
+        }
+
+        #endregion
+
         /// <summary>listのインスタンス化　ファイルダイアログのフィルター変更 </summary>
         private void init() {
             Datalist = new List<Data>();
 
-            saveFileDialog1.Filter = "すべてのファイル(*.*)|*.*";
-            openFileDialog1.Filter = "すべてのファイル(*.*)|*.*";
+            saveFileDialog1.Filter = FILTER + "(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
+            openFileDialog1.Filter = FILTER + "(*.dat)||*.dat|すべてのファイル(*.*)|*.*";
         }
 
-        /// <summary> </summary>
+        /// <summary></summary>
         private void ListSelectChange() {
-            if (listBox1.SelectedIndex < 0) return;
-
-            txtName.Text = listBox1.SelectedItem.ToString();
-
+            SetDataForForm();
         }
 
-        /// <summary> </summary>
-        private void ListAdd() {
-            Data newData = (listBox1.SelectedIndex < 0) ? new Data(true) : Datalist[listBox1.SelectedIndex];
-
-            Datalist.Add(newData);
-            listBox1.Items.Add(newData.Name);
-            listBox1.SelectedIndex = listBox1.Items.Count - 1;
-        }
-        /// <summary> </summary>
-        private void ListRemove() {
-            int index = listBox1.SelectedIndex;
-
-            if (index < 0) return;
-
-            Datalist.RemoveAt(index);
-            listBox1.Items.RemoveAt(index);
-            ListUpdate();
-
-
-        }
-        /// <summary> </summary>
-        private void ListUpdate() {
-            int index = listBox1.SelectedIndex;
-
-            if (index < 0) return;
-
-            Datalist[index] = GetEditData();
-            listBox1.Items[index] = txtName.Text;
-        }
-
+        /// <summary></summary>
         private void ListUp() {
             if (listBox1.Items.Count < 2) return;
             int index = listBox1.SelectedIndex;
@@ -120,6 +110,7 @@ namespace JsonEditor {
             listBox1.Items[index - 1] = tempItem;
             listBox1.SelectedIndex = index - 1;
         }
+        /// <summary></summary>
         private void ListDown() {
             if (listBox1.Items.Count < 2) return;
             int index = listBox1.SelectedIndex;
@@ -132,13 +123,36 @@ namespace JsonEditor {
             listBox1.SelectedIndex = index + 1;
         }
 
-        /// <summary>フォームの内容からデータを作る</summary>
-        private Data GetEditData() {
-            Data data = new Data();
-            data.Name = txtName.Text;
-            data.Summary = txtSummary.Text;
-            return data;
+        /// <summary>リストボックスに追加</summary>
+        private void ListAdd() {
+            Data newData = (listBox1.SelectedIndex < 0) ? new Data(true) : Datalist[listBox1.SelectedIndex];
+
+            Datalist.Add(newData);
+            listBox1.Items.Add(newData.Name);
+            listBox1.SelectedIndex = listBox1.Items.Count - 1;
         }
+        /// <summary>リストボックスから削除</summary>
+        private void ListRemove() {
+            int index = listBox1.SelectedIndex;
+
+            if (index < 0) return;
+
+            Datalist.RemoveAt(index);
+            listBox1.Items.RemoveAt(index);
+        }
+
+
+        /// <summary>フォームの内容に合わせてデータリストとリストボックスを更新</summary>
+        private void ListUpdate() {
+            int index = listBox1.SelectedIndex;
+
+            if (index < 0) return;
+
+            Datalist[index] = GetEditData();
+            listBox1.Items[index] = Datalist[index].Name;
+        }
+
+
 
         /// <summary>データリストをJson文字列化</summary>
         /// <returns>DataListをJson化した文字列</returns>
@@ -152,12 +166,11 @@ namespace JsonEditor {
             listBox1.Items.Clear();
             Datalist = LitJson.JsonMapper.ToObject<List<Data>>(json);
 
-            //todo
             for (int i = 0; i < Datalist.Count; i++) {
                 listBox1.Items.Add(Datalist[i].Name);
             }
+            if (listBox1.Items.Count > 0) listBox1.SelectedIndex = 0;
         }
-
 
     }
 }
