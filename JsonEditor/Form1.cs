@@ -91,7 +91,7 @@ namespace JsonEditor {
             Datalist = new List<Data>();
 
             saveFileDialog1.Filter = FILTER + "(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
-            openFileDialog1.Filter = FILTER + "(*.dat)||*.dat|すべてのファイル(*.*)|*.*";
+            openFileDialog1.Filter = FILTER + "(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
         }
 
         /// <summary></summary>
@@ -105,10 +105,8 @@ namespace JsonEditor {
             int index = listBox1.SelectedIndex;
             if (index == 0) return;
 
-            object tempItem = listBox1.SelectedItem;
-            listBox1.Items[index] = listBox1.Items[index - 1];
-            listBox1.Items[index - 1] = tempItem;
-            listBox1.SelectedIndex = index - 1;
+            DataSwap(index, index - 1);
+            ListItemSwap(index, index - 1);
         }
         /// <summary></summary>
         private void ListDown() {
@@ -116,12 +114,33 @@ namespace JsonEditor {
             int index = listBox1.SelectedIndex;
             if (index == listBox1.Items.Count - 1) return;
 
-            object tempItem = listBox1.SelectedItem;
-            listBox1.Items[index] = listBox1.Items[index + 1];
-            listBox1.Items[index + 1] = tempItem;
-
-            listBox1.SelectedIndex = index + 1;
+            DataSwap(index, index + 1);
+            ListItemSwap(index, index + 1);
         }
+
+        /// <summary>
+        /// リストボックスの内容を交換
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private void ListItemSwap(int x, int y) {
+            object tempItem = listBox1.Items[x];
+            listBox1.Items[x] = listBox1.Items[y];
+            listBox1.Items[y] = tempItem;
+
+            listBox1.SelectedIndex = y;
+        }
+        /// <summary>
+        /// データリストの内容を交換
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private void DataSwap(int x, int y) {
+            Data tmpData = Datalist[x];
+            Datalist[x] = Datalist[y];
+            Datalist[y] = tmpData;
+        }
+
 
         /// <summary>リストボックスに追加</summary>
         private void ListAdd() {
@@ -153,6 +172,10 @@ namespace JsonEditor {
         }
 
 
+        private static void UpDownWrap(NumericUpDown nud) {
+            if (nud.Value == nud.Maximum) nud.Value = nud.Minimum + 1;
+            if (nud.Value == nud.Minimum) nud.Value = nud.Maximum - 1;
+        }
 
         /// <summary>データリストをJson文字列化</summary>
         /// <returns>DataListをJson化した文字列</returns>

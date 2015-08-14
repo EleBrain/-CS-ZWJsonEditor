@@ -57,8 +57,7 @@ namespace ResourceEditor {
             ListDown();
         }
         private void nudSpriteNumber_ValueChanged(object sender, EventArgs e) {
-            if (nudSpriteNumber.Value == nudSpriteNumber.Maximum) nudSpriteNumber.Value = nudSpriteNumber.Minimum + 1;
-            if (nudSpriteNumber.Value == nudSpriteNumber.Minimum) nudSpriteNumber.Value = nudSpriteNumber.Maximum - 1;
+            UpDownWrap(nudSpriteNumber);
         }
         private void txtName_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter) {
@@ -98,7 +97,7 @@ namespace ResourceEditor {
             Datalist = new List<Data>();
 
             saveFileDialog1.Filter = FILTER + "(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
-            openFileDialog1.Filter = FILTER + "(*.dat)||*.dat|すべてのファイル(*.*)|*.*";
+            openFileDialog1.Filter = FILTER + "(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
         }
 
         /// <summary></summary>
@@ -112,10 +111,8 @@ namespace ResourceEditor {
             int index = listBox1.SelectedIndex;
             if (index == 0) return;
 
-            object tempItem = listBox1.SelectedItem;
-            listBox1.Items[index] = listBox1.Items[index - 1];
-            listBox1.Items[index - 1] = tempItem;
-            listBox1.SelectedIndex = index - 1;
+            DataSwap(index, index - 1);
+            ListItemSwap(index, index - 1);
         }
         /// <summary></summary>
         private void ListDown() {
@@ -123,12 +120,33 @@ namespace ResourceEditor {
             int index = listBox1.SelectedIndex;
             if (index == listBox1.Items.Count - 1) return;
 
-            object tempItem = listBox1.SelectedItem;
-            listBox1.Items[index] = listBox1.Items[index + 1];
-            listBox1.Items[index + 1] = tempItem;
-
-            listBox1.SelectedIndex = index + 1;
+            DataSwap(index, index + 1);
+            ListItemSwap(index, index + 1);
         }
+
+        /// <summary>
+        /// リストボックスの内容を交換
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private void ListItemSwap(int x, int y) {
+            object tempItem = listBox1.Items[x];
+            listBox1.Items[x] = listBox1.Items[y];
+            listBox1.Items[y] = tempItem;
+
+            listBox1.SelectedIndex = y;
+        }
+        /// <summary>
+        /// データリストの内容を交換
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private void DataSwap(int x, int y) {
+            Data tmpData = Datalist[x];
+            Datalist[x] = Datalist[y];
+            Datalist[y] = tmpData;
+        }
+
 
         /// <summary>リストボックスに追加</summary>
         private void ListAdd() {
@@ -157,6 +175,11 @@ namespace ResourceEditor {
 
             Datalist[index] = GetEditData();
             listBox1.Items[index] = Datalist[index].Name;
+        }
+
+        private static void UpDownWrap(NumericUpDown nud) {
+            if (nud.Value == nud.Maximum) nud.Value = nud.Minimum + 1;
+            if (nud.Value == nud.Minimum) nud.Value = nud.Maximum - 1;
         }
 
         /// <summary>データリストをJson文字列化</summary>
