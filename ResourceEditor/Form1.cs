@@ -56,38 +56,22 @@ namespace ResourceEditor {
         private void btnDown_Click(object sender, EventArgs e) {
             ListDown();
         }
-        private void nudSpriteNumber_ValueChanged(object sender, EventArgs e) {
-            UpDownWrap(nudSpriteNumber);
-        }
-        private void txtName_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar == (char)Keys.Enter) {
-                ListUpdate();
-                e.Handled = true;
-            }
-        }
 
+        private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e) {
+            ListUpdate();
+        }
         #endregion
 
         #region "変更するところ"
         private const string FILTER = "リソースデータ";
 
-        /// <summary>フォームの内容からデータを作る</summary>
-        private Data GetEditData() {
-            Data data = new Data();
-            data.Name = txtName.Text;
-            data.Summary = txtSummary.Text;
-            data.SpriteNumber = (int)nudSpriteNumber.Value;
-            return data;
-        }
         /// <summary>リストボックスで選択中のデータをフォームに反映</summary>
         private void SetDataForForm() {
             int index = listBox1.SelectedIndex;
 
             if (index < 0) return;
 
-            txtName.Text = Datalist[index].Name;
-            txtSummary.Text = Datalist[index].Summary;
-            nudSpriteNumber.Value = Datalist[index].SpriteNumber;
+            propertyGrid1.SelectedObject = Datalist[index];
         }
 
         #endregion
@@ -173,13 +157,7 @@ namespace ResourceEditor {
 
             if (index < 0) return;
 
-            Datalist[index] = GetEditData();
             listBox1.Items[index] = Datalist[index].Name;
-        }
-
-        private static void UpDownWrap(NumericUpDown nud) {
-            if (nud.Value == nud.Maximum) nud.Value = nud.Minimum + 1;
-            if (nud.Value == nud.Minimum) nud.Value = nud.Maximum - 1;
         }
 
         /// <summary>データリストをJson文字列化</summary>
@@ -199,6 +177,7 @@ namespace ResourceEditor {
             }
             if (listBox1.Items.Count > 0) listBox1.SelectedIndex = 0;
         }
+
 
     }
 }

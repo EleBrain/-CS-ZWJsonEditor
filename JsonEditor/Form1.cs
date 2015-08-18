@@ -22,10 +22,6 @@ namespace JsonEditor {
         private void btnRemove_Click(object sender, EventArgs e) {
             ListRemove();
         }
-        private void btnRefresh_Click(object sender, EventArgs e) {
-            ListUpdate();
-        }
-
 
         private void tsmiSave_Click(object sender, EventArgs e) {
 
@@ -67,21 +63,13 @@ namespace JsonEditor {
         #region "変更するところ"
         private const string FILTER = "データ";
 
-        /// <summary>フォームの内容からデータを作る</summary>
-        private Data GetEditData() {
-            Data data = new Data();
-            data.Name = txtName.Text;
-            data.Summary = txtSummary.Text;
-            return data;
-        }
         /// <summary>リストボックスで選択中のデータをフォームに反映</summary>
         private void SetDataForForm() {
             int index = listBox1.SelectedIndex;
 
             if (index < 0) return;
 
-            txtName.Text = Datalist[index].Name;
-            txtSummary.Text = Datalist[index].Summary;
+            propertyGrid1.SelectedObject = Datalist[index];
         }
 
         #endregion
@@ -167,15 +155,9 @@ namespace JsonEditor {
 
             if (index < 0) return;
 
-            Datalist[index] = GetEditData();
             listBox1.Items[index] = Datalist[index].Name;
         }
 
-
-        private static void UpDownWrap(NumericUpDown nud) {
-            if (nud.Value == nud.Maximum) nud.Value = nud.Minimum + 1;
-            if (nud.Value == nud.Minimum) nud.Value = nud.Maximum - 1;
-        }
 
         /// <summary>データリストをJson文字列化</summary>
         /// <returns>DataListをJson化した文字列</returns>

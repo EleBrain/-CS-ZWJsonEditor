@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace JsonEditor {
     class Data {
 
-        public string Name;
-        public string Summary;
+        [Description("データの名前")]
+        public string Name { get; set; }
+
+        [Description("データの概要")]
+        public string Summary { get; set; }
 
         public Data() { }
         public Data(bool b) {

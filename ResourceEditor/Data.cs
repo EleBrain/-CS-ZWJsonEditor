@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+
 
 namespace ResourceEditor {
-    class Data {
+    public class Data {
 
-        public string Name;
-        public string Summary;
-        public int SpriteNumber;
+        [Description("データの名前")]
+        public string Name { get; set; }
+
+        [Description("データの概要")]
+        public string Summary { get; set; }
+
+        [Description("データのイメージ画像のインデックス")]
+        public int SpriteNumber { get; set; }
 
         public Data() { }
         public Data(bool b) {
 
-            this.Name = "新しいデータ";
-            this.Summary = "";
+            Name = "新しいデータ";
+            Summary = "";
         }
     }
 }
