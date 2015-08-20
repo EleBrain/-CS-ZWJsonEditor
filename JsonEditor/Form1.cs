@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace JsonEditor {
     public partial class Form1 : Form {
 
-        List<Data> Datalist;
+        private List<Data> Datalist;
 
         #region "formEvent"
         public Form1() {
@@ -58,6 +58,10 @@ namespace JsonEditor {
                 e.Handled = true;
             }
         }
+        private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e) {
+            ListUpdate();
+        }
+
         #endregion
 
         #region "変更するところ"
@@ -78,6 +82,7 @@ namespace JsonEditor {
         private void init() {
             Datalist = new List<Data>();
 
+            propertyGrid1.SelectedObject = Datalist;
             saveFileDialog1.Filter = FILTER + "(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
             openFileDialog1.Filter = FILTER + "(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
         }
@@ -132,10 +137,10 @@ namespace JsonEditor {
 
         /// <summary>リストボックスに追加</summary>
         private void ListAdd() {
-            Data newData = (listBox1.SelectedIndex < 0) ? new Data(true) : Datalist[listBox1.SelectedIndex];
+            Data newData = (listBox1.SelectedIndex < 0) ? new Data(true) : new Data(Datalist[listBox1.SelectedIndex]);
 
             Datalist.Add(newData);
-            listBox1.Items.Add(newData.Name);
+            listBox1.Items.Add(newData);
             listBox1.SelectedIndex = listBox1.Items.Count - 1;
         }
         /// <summary>リストボックスから削除</summary>
@@ -155,7 +160,7 @@ namespace JsonEditor {
 
             if (index < 0) return;
 
-            listBox1.Items[index] = Datalist[index].Name;
+            listBox1.Items[index] = Datalist[index];
         }
 
 
@@ -176,6 +181,7 @@ namespace JsonEditor {
             }
             if (listBox1.Items.Count > 0) listBox1.SelectedIndex = 0;
         }
+
 
     }
 }

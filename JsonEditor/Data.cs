@@ -12,8 +12,16 @@ namespace JsonEditor {
         public Data() { }
         public Data(bool b) {
 
-            this.Name = "新しいデータ";
-            this.Summary = "";
+            Name = "新しいデータ";
+            Summary = "";
+        }
+        public Data(Data data) {
+
+            Name = data.Name;
+            Summary = data.Summary;
+        }
+        public override string ToString() {
+            return Name;
         }
     }
 }
