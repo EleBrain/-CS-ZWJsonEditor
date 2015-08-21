@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 public partial class Form1 : Form {
 
+    private DataList Datalist;
 
     #region "formEvent"
     public Form1() {
@@ -39,6 +40,7 @@ public partial class Form1 : Form {
         }
         propertyGrid1.Refresh();
     }
+
     private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
         string s = GetJson();
         if (string.IsNullOrEmpty(s)) return;
@@ -47,8 +49,7 @@ public partial class Form1 : Form {
 
     #endregion
 
-    private DataList Datalist;
-    private const string FILTER = "データ";
+    private const string FILTER = "ユニットメイクパーツデータ";
 
     /// <summary>listのインスタンス化　ファイルダイアログのフィルター変更 </summary>
     private void init() {
@@ -82,5 +83,6 @@ public partial class Form1 : Form {
             throw;
         }
     }
+
 
 }

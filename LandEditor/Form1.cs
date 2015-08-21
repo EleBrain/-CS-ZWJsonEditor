@@ -48,7 +48,7 @@ public partial class Form1 : Form {
     #endregion
 
     private DataList Datalist;
-    private const string FILTER = "データ";
+    private const string FILTER = "地形データ";
 
     /// <summary>listのインスタンス化　ファイルダイアログのフィルター変更 </summary>
     private void init() {
