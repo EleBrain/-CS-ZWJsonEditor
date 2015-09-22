@@ -1,13 +1,15 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 [TypeConverter(typeof(ExpandableObjectConverter))]
 class Data {
 
-    [Description("名前")]
     public string Name { get; set; }
 
-    [Description("概要")]
     public string Summary { get; set; }
+
+    //フィールドマップ　読み込む地形のインデックス
+    public List<int>[] FieldMap { get; set; }
 
     public Data() { }
     public override string ToString() {

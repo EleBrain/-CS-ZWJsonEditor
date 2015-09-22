@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 public partial class Form1 : Form {
 
-    private DataList Datalist;
 
     #region "formEvent"
     public Form1() {
@@ -34,13 +34,17 @@ public partial class Form1 : Form {
         abox.ShowDialog();
     }
 
+    private void numericUpDown1_ValueChanged(object sender, EventArgs e) {
+        UpDownWrap(numericUpDown1);
+    }
+
     private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e) {
         if (e.ChangedItem.Label == "Datas") {
             propertyGrid1.ExpandAllGridItems();
+            numericUpDown1.Maximum = Datalist.Datas.Length + 1;
         }
         propertyGrid1.Refresh();
     }
-
     private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
         string s = GetJson();
         if (string.IsNullOrEmpty(s)) return;
@@ -49,7 +53,8 @@ public partial class Form1 : Form {
 
     #endregion
 
-    private const string FILTER = "ユニットメイクパーツデータ";
+    private DataList Datalist;
+    private const string FILTER = "データ";
 
     /// <summary>listのインスタンス化　ファイルダイアログのフィルター変更 </summary>
     private void init() {
@@ -82,6 +87,19 @@ public partial class Form1 : Form {
         }
         catch (Exception) {
             throw;
+        }
+    }
+    private static void UpDownWrap(NumericUpDown nud) {
+        if (nud.Value == nud.Maximum) nud.Value = nud.Minimum + 1;
+        if (nud.Value == nud.Minimum) nud.Value = nud.Maximum - 1;
+    }
+
+
+    private void pictureBox1_Click(object sender, EventArgs e) {
+        if (colorDialog1.ShowDialog() == DialogResult.OK) {
+            pictureBox1.BackColor = colorDialog1.Color;
+            Datalist.Datas[(int)numericUpDown1.Value].ColorStr = ColorTranslator.ToHtml(Color.FromArgb(colorDialog1.Color.ToArgb()));
+            propertyGrid1.Refresh();
         }
     }
 

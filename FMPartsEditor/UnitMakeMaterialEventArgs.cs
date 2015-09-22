@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class FreeMakeMaterialEventArgs : EventArgs {
+public class UnitMakeMaterialEventArgs : EventArgs {
 
-    public FMMaterialType MaterialType { get; set; }
-    public FMAddRemoveType AddType { get; set; }
+    public UMMaterialType MaterialType { get; set; }
+    public UMAddRemoveType AddType { get; set; }
     public string Name { get; set; }
     public int value { get; set; }
 
-    public FreeMakeMaterialEventArgs() { }
+    public UnitMakeMaterialEventArgs() { }
 
     public override string ToString() {
         return Name;
@@ -22,7 +22,7 @@ public class FreeMakeMaterialEventArgs : EventArgs {
 //Tag[index]追加
 //SKILL[index] 追加
 
-public enum FMMaterialType {
+public enum UMMaterialType {
     POWER,
     TAG,
     SKILL,
@@ -30,7 +30,7 @@ public enum FMMaterialType {
     CONDITION,
 
 }
-public enum FMAddRemoveType {
+public enum UMAddRemoveType {
     ADD,
     MINUS,
     EQUAL,

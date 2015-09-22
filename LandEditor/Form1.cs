@@ -76,6 +76,7 @@ public partial class Form1 : Form {
         //エラー処理を追加する
         try {
             Datalist.Datas = LitJson.JsonMapper.ToObject<Data[]>(json);
+            propertyGrid1.Refresh();
             propertyGrid1.ExpandAllGridItems();
         }
         catch (Exception) {
