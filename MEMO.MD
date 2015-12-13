@@ -42,20 +42,3 @@ Propertygridで選択中のインデックスがわからない
 
 
 
-Dictionary<string,int>を編集したい
-    Dictionary<string,int>はint配列になる
-    　Itemsプロパティを見ている?
-    Stringコレクションエディタ
-    string配列のように一列ずつ表示したい
-
-
-    EditorはとりあえずMultilineStringEditorにする
-        System.Windows.Forms.Design.StringArrayEditorと
-        System.Windows.Forms.Design.StringCollectionEditorがあるけど
-        internalクラスなのでアクセスできない
-        MultilineStringEditorはsealedクラス
-    EditorがInt配列を受け取れない
-
-    1. 自分でUITypeEditorを継承しダイアログを用意する
-    2. Dictionaryを自作クラスにする
-
