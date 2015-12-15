@@ -2,11 +2,10 @@
 
 何かをJson化するツール　主に自分で作るゲーム用
 
-ライブラリは[LitJSON](http://lbv.github.io/litjson/)を使用
+ライブラリは[Json.NET](http://www.newtonsoft.com/json)を使用
 
-プロジェクト名JsonEditorは他のエディタのひな型になる予定
+プロジェクト名JsonEditorのフォームを継承
+プロジェクト名JsonEditorTemplateは他のエディタのひな型
 
-ひどいところだらけかと思いますが、
+ひどいコードかと思いますが、
 アドバイスなどがあれば教えてもらえるとうれしいです。
-
-
