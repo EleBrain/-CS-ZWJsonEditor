@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+
 public partial class JsonEditorForm<T> : Form {
 
 
@@ -49,15 +51,18 @@ public partial class JsonEditorForm<T> : Form {
 
     private BaseDataList<T> Datalist = new BaseDataList<T>();
     protected string FileTypeName = "～データ";
-    protected string FileName = "data";
+    protected string FileName = "Data";
 
     /// <summary>listのインスタンス化　ファイルダイアログのフィルター変更 </summary>
     protected void init() {
         propertyGrid1.SelectedObject = Datalist;
         saveFileDialog1.InitialDirectory = Application.StartupPath;
         openFileDialog1.InitialDirectory = Application.StartupPath;
-        saveFileDialog1.Filter = FileTypeName + "(" + FileName + ".dat)|" + FileName + ".dat|すべてのファイル(*.*)|*.*";
-        openFileDialog1.Filter = FileTypeName + "(" + FileName + ".dat)|" + FileName + ".dat|すべてのファイル(*.*)|*.*";
+
+        saveFileDialog1.FileName = FileName + ".dat";
+        openFileDialog1.FileName = FileName + ".dat";
+        saveFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*..dat)|*..dat" + ".dat|すべてのファイル(*.*)|*.*";
+        openFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*..dat)|*..dat" + ".dat|すべてのファイル(*.*)|*.*";
     }
 
     /// <summary>データリストをJson文字列化</summary>
@@ -65,8 +70,10 @@ public partial class JsonEditorForm<T> : Form {
     private string GetJson() {
         //エラー処理を追加する
         if (Datalist == null || Datalist.Datas == null) return "";
+        JsonSerializerSettings setting = new JsonSerializerSettings();
+        setting.TypeNameHandling = TypeNameHandling.All;
 
-        return LitJson.JsonMapper.ToJson(Datalist.Datas);
+        return JsonConvert.SerializeObject(Datalist.Datas, Formatting.Indented, setting);
     }
 
     /// <summary>読み込んだ文字列をフォームに反映</summary>
@@ -74,7 +81,7 @@ public partial class JsonEditorForm<T> : Form {
     private void LoadData(string json) {
         //エラー処理を追加する
         try {
-            Datalist.Datas = LitJson.JsonMapper.ToObject<T[]>(json);
+            Datalist.Datas = JsonConvert.DeserializeObject<T[]>(json);
             propertyGrid1.Refresh();
             propertyGrid1.ExpandAllGridItems();
         }
@@ -84,3 +91,4 @@ public partial class JsonEditorForm<T> : Form {
     }
 
 }
+

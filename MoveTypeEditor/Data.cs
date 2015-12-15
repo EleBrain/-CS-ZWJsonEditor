@@ -1,18 +1,19 @@
 ﻿using System.ComponentModel;
 
-[TypeConverter(typeof(ExpandableObjectConverter))]
-class Data {
+[TypeConverter(typeof(SerializableExpandableObjectConverter))]
+public class Data {
 
-    [Description("名前")]
     public string Name { get; set; }
-
-    [Description("概要")]
-    public string Summary { get; set; }
-
-    [Description("移動にかかるコスト")]
+    public int MovePower { get; set; }
     public int[] MoveCosts { get; set; }
 
     public Data() { }
+
+    public Data(string name, int movePower, int[] moveCosts) {
+        Name = name;
+        MovePower = movePower;
+        MoveCosts = moveCosts;
+    }
     public override string ToString() {
         return Name;
     }

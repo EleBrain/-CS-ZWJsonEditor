@@ -1,40 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Drawing.Design;
 
-[TypeConverter(typeof(ExpandableObjectConverter))]
-class Data {
+[TypeConverter(typeof(SerializableExpandableObjectConverter))]
+public class Data {
 
-    //名前
     public string Name { get; set; }
 
-    //イメージの番号
     public int SpriteNumber { get; set; }
-
-    //持ち主・作成可能なプレイヤーの番号
     public int OwnerNumber { get; set; }
+    //public MoveData MoveData { get; set; } = new MoveData();
 
-    //移動力
-    public int MovePower { get; set; }
-
-    //移動タイプ
-    public string MoveTypeName { get; set; }
-
-    //能力
-        Editor(typeof(DicitonaryEditor), typeof(UITypeEditor)),
-        TypeConverter(typeof(DictionaryConverter))]
+    [TypeConverter(typeof(DictionaryConverter))]
+    [Editor(typeof(DicitonaryEditor), typeof(UITypeEditor))]
     public Dictionary<string, int> Powers { get; set; }
 
-    //タグ
     public string[] Tags { get; set; }
+    public string[] SkillList { get; set; }
+    public string[] StateList { get; set; }
 
-    //所持スキルの名前
-    public string[] SkillName { get; set; }
+    public string[] DeleteCondition { get; set; }
 
-    //状態異常
-
-
-    public Data() { }
     public override string ToString() {
         return Name;
     }
