@@ -61,8 +61,8 @@ public partial class JsonEditorForm<T> : Form {
 
         saveFileDialog1.FileName = FileName + ".dat";
         openFileDialog1.FileName = FileName + ".dat";
-        saveFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*..dat)|*..dat" + ".dat|すべてのファイル(*.*)|*.*";
-        openFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*..dat)|*..dat" + ".dat|すべてのファイル(*.*)|*.*";
+        saveFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*.dat)|*.dat" + ".dat|すべてのファイル(*.*)|*.*";
+        openFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*.dat)|*.dat" + ".dat|すべてのファイル(*.*)|*.*";
     }
 
     /// <summary>データリストをJson文字列化</summary>
