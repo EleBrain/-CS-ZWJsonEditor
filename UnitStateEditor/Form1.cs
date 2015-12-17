@@ -6,6 +6,7 @@ namespace UnitStateEditor {
             FileTypeName = "ユニット状態データ";  //ファイルの名前の説明
             FileName = "UnitStateData";            //ファイルの名前
             InitializeComponent();
+            init();
         }
     }
 }

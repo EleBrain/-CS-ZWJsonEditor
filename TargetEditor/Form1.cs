@@ -6,6 +6,7 @@ namespace TargetEditor {
             FileTypeName = "ターゲットデータ";  //ファイルの名前の説明
             FileName = "TargetData";            //ファイルの名前
             InitializeComponent();
+            init();
         }
     }
 }

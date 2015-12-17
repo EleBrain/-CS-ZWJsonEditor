@@ -5,6 +5,7 @@ namespace UnitEditor {
             FileTypeName = "ユニットデータ";  //ファイルの名前の説明
             FileName = "UnitData";            //ファイルの名前
             InitializeComponent();
+            init();
         }
     }
 }

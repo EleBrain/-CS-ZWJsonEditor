@@ -43,7 +43,7 @@
             this.tsmiHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -55,32 +55,34 @@
             this.toolStripSeparator1,
             this.tsmiExit});
             this.tsmiFile.Name = "tsmiFile";
-            this.tsmiFile.Size = new System.Drawing.Size(70, 21);
+            this.tsmiFile.Size = new System.Drawing.Size(66, 20);
             this.tsmiFile.Text = "ファイル(&F)";
             // 
             // tsmiSave
             // 
             this.tsmiSave.Name = "tsmiSave";
-            this.tsmiSave.Size = new System.Drawing.Size(120, 22);
+            this.tsmiSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.tsmiSave.Size = new System.Drawing.Size(157, 22);
             this.tsmiSave.Text = "保存(&S)";
             this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiLoad
             // 
             this.tsmiLoad.Name = "tsmiLoad";
-            this.tsmiLoad.Size = new System.Drawing.Size(120, 22);
+            this.tsmiLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.tsmiLoad.Size = new System.Drawing.Size(157, 22);
             this.tsmiLoad.Text = "読込(&O)";
             this.tsmiLoad.Click += new System.EventHandler(this.tsmiLoad_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(117, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(120, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(157, 22);
             this.tsmiExit.Text = "終了(&X)";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -89,13 +91,13 @@
             this.tsmiHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiVersion});
             this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(69, 21);
+            this.tsmiHelp.Size = new System.Drawing.Size(65, 20);
             this.tsmiHelp.Text = "ヘルプ(&H)";
             // 
             // tsmiVersion
             // 
             this.tsmiVersion.Name = "tsmiVersion";
-            this.tsmiVersion.Size = new System.Drawing.Size(166, 22);
+            this.tsmiVersion.Size = new System.Drawing.Size(158, 22);
             this.tsmiVersion.Text = "バージョン情報(&A)";
             this.tsmiVersion.Click += new System.EventHandler(this.tsmiVersion_Click);
             // 

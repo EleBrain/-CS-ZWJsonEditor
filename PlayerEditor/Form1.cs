@@ -6,6 +6,7 @@ namespace PlayerEditor {
             FileTypeName = "プレイヤーデータ";  //ファイルの名前の説明
             FileName = "PlayerData";            //ファイルの名前
             InitializeComponent();
+            init();
         }
     }
 }

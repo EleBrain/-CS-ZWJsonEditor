@@ -5,6 +5,7 @@ namespace CalcEditor {
             FileTypeName = "計算データ";  //ファイルの名前の説明
             FileName = "CalcData";            //ファイルの名前
             InitializeComponent();
+            init();
         }
     }
 }

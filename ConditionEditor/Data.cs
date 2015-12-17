@@ -5,35 +5,19 @@ public class Data {
 
     public string Name { get; set; }
 
-    public string ColorStr { get; set; }
+    public string Summary { get; set; }
 
-    public int[] KnownUnits { get; set; }
-
-    public int[] Resources { get; set; }
-
-    public string[] WinConditions { get; set; }
-    public string[] LoseConditions { get; set; }
-    public ControlType Control { get; set; }
+    //参照する変数のタイプ
+    public ConditionMaterial[] Materials { get; set; }
 
     public Data() { }
-    public Data(string name, string colorStr, int[] resources,
-        int[] knownUnits, string[] winConditions, string[] loseConditions, ControlType control) {
+    public Data(string name, string summary, ConditionMaterial[] material) {
         Name = name;
-        ColorStr = colorStr;
-        KnownUnits = knownUnits;
-        Resources = resources;
-        WinConditions = winConditions;
-        LoseConditions = loseConditions;
-        Control = control;
+        Summary = summary;
+        Materials = material;
     }
+
     public override string ToString() {
         return Name;
     }
-}
-
-public enum ControlType {
-    None,
-    AI,
-    NoneOrHuman,
-    AIOrHuman
 }

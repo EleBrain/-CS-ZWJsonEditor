@@ -5,6 +5,7 @@ namespace RangeEditor {
             FileTypeName = "範囲データ";  //ファイルの名前の説明
             FileName = "RangeData";            //ファイルの名前
             InitializeComponent();
+            init();
         }
     }
 }

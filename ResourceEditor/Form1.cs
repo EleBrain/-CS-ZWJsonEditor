@@ -5,6 +5,7 @@ namespace ResourceEditor {
             FileTypeName = "資源データ";  //ファイルの名前の説明
             FileName = "ResourceData";            //ファイルの名前
             InitializeComponent();
+            init();
         }
     }
 }
