@@ -13,7 +13,6 @@ public class Data {
 
     public int SpriteNumber { get; set; }
     public int OwnerNumber { get; set; }
-    //public MoveData MoveData { get; set; } = new MoveData();
 
     [TypeConverter(typeof(DictionaryConverter))]
     [Editor(typeof(DicitonaryEditor), typeof(UITypeEditor))]

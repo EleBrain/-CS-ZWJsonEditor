@@ -44,7 +44,7 @@ public partial class JsonEditorForm<T> : Form {
     private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
         string s = GetJson();
         if (string.IsNullOrEmpty(s)) return;
-        System.IO.File.WriteAllText("backup.dat", s);
+        System.IO.File.WriteAllText(FileName + "backup.dat", s);
     }
 
     #endregion
