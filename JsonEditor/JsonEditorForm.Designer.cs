@@ -33,6 +33,10 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.tsmiSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAutoSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,6 +44,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile,
+            this.tsmiOption,
             this.tsmiHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -50,8 +55,10 @@
             // tsmiFile
             // 
             this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSave,
+            this.tsmiNew,
             this.tsmiLoad,
+            this.tsmiSave,
+            this.tsmiSaveAs,
             this.toolStripSeparator1,
             this.tsmiExit});
             this.tsmiFile.Name = "tsmiFile";
@@ -62,27 +69,27 @@
             // 
             this.tsmiSave.Name = "tsmiSave";
             this.tsmiSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.tsmiSave.Size = new System.Drawing.Size(157, 22);
-            this.tsmiSave.Text = "保存(&S)";
+            this.tsmiSave.Size = new System.Drawing.Size(248, 22);
+            this.tsmiSave.Text = "上書き保存(&S)";
             this.tsmiSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiLoad
             // 
             this.tsmiLoad.Name = "tsmiLoad";
             this.tsmiLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.tsmiLoad.Size = new System.Drawing.Size(157, 22);
+            this.tsmiLoad.Size = new System.Drawing.Size(248, 22);
             this.tsmiLoad.Text = "読込(&O)";
             this.tsmiLoad.Click += new System.EventHandler(this.tsmiLoad_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(245, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(157, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(248, 22);
             this.tsmiExit.Text = "終了(&X)";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -120,6 +127,38 @@
             this.propertyGrid1.ToolbarVisible = false;
             this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
             // 
+            // tsmiSaveAs
+            // 
+            this.tsmiSaveAs.Name = "tsmiSaveAs";
+            this.tsmiSaveAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.tsmiSaveAs.Size = new System.Drawing.Size(248, 22);
+            this.tsmiSaveAs.Text = "名前を付けて保存(&A)";
+            this.tsmiSaveAs.Click += new System.EventHandler(this.tsmiSaveAs_Click);
+            // 
+            // tsmiNew
+            // 
+            this.tsmiNew.Name = "tsmiNew";
+            this.tsmiNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.tsmiNew.Size = new System.Drawing.Size(248, 22);
+            this.tsmiNew.Text = "新規作成(&N)";
+            this.tsmiNew.Click += new System.EventHandler(this.tsmiNew_Click);
+            // 
+            // tsmiOption
+            // 
+            this.tsmiOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAutoSave});
+            this.tsmiOption.Name = "tsmiOption";
+            this.tsmiOption.Size = new System.Drawing.Size(79, 20);
+            this.tsmiOption.Text = "オプション(&O)";
+            // 
+            // tsmiAutoSave
+            // 
+            this.tsmiAutoSave.Name = "tsmiAutoSave";
+            this.tsmiAutoSave.Size = new System.Drawing.Size(166, 22);
+            this.tsmiAutoSave.Text = "自動バックアップ(&B)";
+            this.tsmiAutoSave.Click += new System.EventHandler(this.tsmiAutoSave_Click);
+            // 
             // JsonEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -129,6 +168,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "JsonEditorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.menuStrip1.ResumeLayout(false);
@@ -150,4 +190,8 @@
     protected System.Windows.Forms.OpenFileDialog openFileDialog1;
     protected System.Windows.Forms.SaveFileDialog saveFileDialog1;
     protected System.Windows.Forms.PropertyGrid propertyGrid1;
+    private System.Windows.Forms.ToolStripMenuItem tsmiSaveAs;
+    private System.Windows.Forms.ToolStripMenuItem tsmiNew;
+    private System.Windows.Forms.ToolStripMenuItem tsmiOption;
+    private System.Windows.Forms.ToolStripMenuItem tsmiAutoSave;
 }

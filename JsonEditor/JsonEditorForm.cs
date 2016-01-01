@@ -4,6 +4,13 @@ using Newtonsoft.Json;
 
 public partial class JsonEditorForm<T> : Form {
 
+    private const string SettingFileName = "EditorSetting.txt";
+
+    private BaseDataList<T> Datalist = new BaseDataList<T>();
+
+    protected string FileTypeName = "～データ";
+    protected string FileName = "Data";
+
 
     #region "FormEvents"
     public JsonEditorForm() {
@@ -11,20 +18,42 @@ public partial class JsonEditorForm<T> : Form {
         init();
     }
 
+    private void tsmiNew_Click(object sender, EventArgs e) {
+        //確認する
+        if (MessageBox.Show("現在のデータは破棄されます。\r\nよろしいですか？", "新規作成", MessageBoxButtons.OKCancel) == DialogResult.OK) {
+            Datalist = new BaseDataList<T>();
+        }
+    }
     private void tsmiSave_Click(object sender, EventArgs e) {
         //エラー処理を追加する
-        DialogResult result = saveFileDialog1.ShowDialog();
-        if (result == System.Windows.Forms.DialogResult.OK) {
+        if (saveFileDialog1.FileName == "") {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
+                System.IO.File.WriteAllText(saveFileDialog1.FileName, GetJson());
+            }
+        } else {
+            System.IO.File.WriteAllText(saveFileDialog1.FileName, GetJson());
+        }
+
+    }
+    private void tsmiSaveAs_Click(object sender, EventArgs e) {
+
+        saveFileDialog1.FileName = FileName + ".dat";
+        if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
             System.IO.File.WriteAllText(saveFileDialog1.FileName, GetJson());
         }
     }
     private void tsmiLoad_Click(object sender, EventArgs e) {
 
         //エラー処理を追加する
-        DialogResult result = openFileDialog1.ShowDialog();
-        if (result == System.Windows.Forms.DialogResult.OK) {
+
+        openFileDialog1.FileName = FileName + ".dat";
+        if (openFileDialog1.ShowDialog() == DialogResult.OK) {
             LoadData(System.IO.File.ReadAllText(openFileDialog1.FileName));
         }
+    }
+
+    private void tsmiAutoSave_Click(object sender, EventArgs e) {
+        tsmiAutoSave.Checked = !tsmiAutoSave.Checked;
     }
 
     private void tsmiExit_Click(object sender, EventArgs e) {
@@ -42,16 +71,11 @@ public partial class JsonEditorForm<T> : Form {
         propertyGrid1.Refresh();
     }
     private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
-        string s = GetJson();
-        if (string.IsNullOrEmpty(s)) return;
-        System.IO.File.WriteAllText(FileName + "backup.dat", s);
+        SettingDataSave();
+        AutoBackUp();
     }
 
     #endregion
-
-    private BaseDataList<T> Datalist = new BaseDataList<T>();
-    protected string FileTypeName = "～データ";
-    protected string FileName = "Data";
 
     /// <summary>listのインスタンス化　ファイルダイアログのフィルター変更 </summary>
     protected void init() {
@@ -59,10 +83,21 @@ public partial class JsonEditorForm<T> : Form {
         saveFileDialog1.InitialDirectory = Application.StartupPath;
         openFileDialog1.InitialDirectory = Application.StartupPath;
 
-        saveFileDialog1.FileName = FileName + ".dat";
-        openFileDialog1.FileName = FileName + ".dat";
         saveFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*.dat)|*.dat" + ".dat|すべてのファイル(*.*)|*.*";
         openFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*.dat)|*.dat" + ".dat|すべてのファイル(*.*)|*.*";
+
+
+        //セッティングフォームからロード
+        if (System.IO.File.Exists(SettingFileName)) {
+            try {
+                string settingText = System.IO.File.ReadAllText(SettingFileName);
+                EditorSettingData setting = JsonConvert.DeserializeObject<EditorSettingData>(settingText);
+                tsmiAutoSave.Checked = setting.IsAutoSave;
+            }
+            catch (Exception) {
+                throw;
+            }
+        }
     }
 
     /// <summary>データリストをJson文字列化</summary>
@@ -88,6 +123,24 @@ public partial class JsonEditorForm<T> : Form {
         catch (Exception) {
             throw;
         }
+    }
+
+
+
+    private void AutoBackUp() {
+        if (tsmiAutoSave.Checked) {
+            string s = GetJson();
+            if (string.IsNullOrEmpty(s)) return;
+            System.IO.File.WriteAllText(FileName + "backup.dat", s);
+        }
+    }
+
+    private void SettingDataSave() {
+        //セッティングファイルに設定を保存
+        JsonSerializerSettings setting = new JsonSerializerSettings();
+        setting.TypeNameHandling = TypeNameHandling.All;
+        System.IO.File.WriteAllText(SettingFileName,
+            JsonConvert.SerializeObject(new EditorSettingData(tsmiAutoSave.Checked), Formatting.Indented, setting));
     }
 
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-[TypeConverter(typeof(ExpandableObjectConverter))]
+[TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class RangeMaterial {
 
    public RangeType RType { get; set; }
