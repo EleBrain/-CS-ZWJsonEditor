@@ -9,7 +9,7 @@ public class Data {
 
     public SkillType SType { get; set; }
     public string[] Conditions { get; set; }
-    public string ChangeTarget { get; set; }
+    public string Target { get; set; }
 
     public string Formura { get; set; }
     public string MaxValue { get; set; }
@@ -24,7 +24,7 @@ public class Data {
         Summary = summary;
         SType = type;
         Conditions = conditions;
-        ChangeTarget = target;
+        Target = target;
         MaxValue = maxValue;
         MinValue = minValue;
         Formura = formura;
