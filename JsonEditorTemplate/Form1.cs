@@ -4,6 +4,7 @@
             FileTypeName = "～データ";  //ファイルの名前の説明
             FileName = "Data";            //ファイルの名前
             InitializeComponent();
+            init();
         }
     }
 }

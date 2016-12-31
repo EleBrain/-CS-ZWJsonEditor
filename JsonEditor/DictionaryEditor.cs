@@ -18,7 +18,6 @@ public class DicitonaryEditor : CollectionEditor {
     Type k;
     Type v;
     public DicitonaryEditor(Type t) : base(typeof(string[])) {
-
         k = t.GetGenericArguments()[0];
         v = t.GetGenericArguments()[1];
     }

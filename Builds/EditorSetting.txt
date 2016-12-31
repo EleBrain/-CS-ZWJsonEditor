@@ -1,4 +1,0 @@
-{
-  "$type": "EditorSettingData, JsonEditor",
-  "IsAutoSave": false
-}

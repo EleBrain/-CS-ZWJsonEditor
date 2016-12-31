@@ -6,7 +6,7 @@ public partial class JsonEditorForm<T> : Form {
 
     private const string SettingFileName = "EditorSetting.txt";
 
-    private BaseDataList<T> Datalist = new BaseDataList<T>();
+    protected BaseDataList<T> Datalist = new BaseDataList<T>();
 
     protected string FileTypeName = "～データ";
     protected string FileName = "Data";
@@ -26,6 +26,7 @@ public partial class JsonEditorForm<T> : Form {
     }
     private void tsmiSave_Click(object sender, EventArgs e) {
         //エラー処理を追加する
+        //ここで上書きできるファイルがあるか判別している
         if (saveFileDialog1.FileName == "") {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
                 System.IO.File.WriteAllText(saveFileDialog1.FileName, GetJson());
@@ -45,7 +46,6 @@ public partial class JsonEditorForm<T> : Form {
     private void tsmiLoad_Click(object sender, EventArgs e) {
 
         //エラー処理を追加する
-
         openFileDialog1.FileName = FileName + ".dat";
         if (openFileDialog1.ShowDialog() == DialogResult.OK) {
             LoadData(System.IO.File.ReadAllText(openFileDialog1.FileName));
@@ -83,9 +83,21 @@ public partial class JsonEditorForm<T> : Form {
         saveFileDialog1.InitialDirectory = Application.StartupPath;
         openFileDialog1.InitialDirectory = Application.StartupPath;
 
-        saveFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*.dat)|*.dat" + ".dat|すべてのファイル(*.*)|*.*";
-        openFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*.dat)|*.dat" + ".dat|すべてのファイル(*.*)|*.*";
+        saveFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
+        openFileDialog1.Filter = FileTypeName + "|" + FileName + ".dat|データファイル(*.dat)|*.dat|すべてのファイル(*.*)|*.*";
 
+        SettingLoad();
+        DefaultLoad();
+    }
+
+    private void DefaultLoad() {
+        if (System.IO.File.Exists(FileName + ".dat")) {
+            LoadData(System.IO.File.ReadAllText(FileName + ".dat"));
+            saveFileDialog1.FileName = FileName + ".dat";
+        }
+    }
+
+    private void SettingLoad() {
 
         //セッティングフォームからロード
         if (System.IO.File.Exists(SettingFileName)) {
@@ -121,7 +133,7 @@ public partial class JsonEditorForm<T> : Form {
             propertyGrid1.ExpandAllGridItems();
         }
         catch (Exception) {
-            throw;
+            MessageBox.Show("jsonからの変換に失敗しました。");
         }
     }
 
@@ -142,6 +154,7 @@ public partial class JsonEditorForm<T> : Form {
         System.IO.File.WriteAllText(SettingFileName,
             JsonConvert.SerializeObject(new EditorSettingData(tsmiAutoSave.Checked), Formatting.Indented, setting));
     }
+
 
 }
 

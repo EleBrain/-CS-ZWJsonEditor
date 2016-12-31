@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
 
@@ -12,15 +8,16 @@ public class Data {
     public string Name { get; set; }
 
     public int SpriteNumber { get; set; }
-    public int OwnerNumber { get; set; }
+    public int OwnerNumber { get; set; }            
+    public int[] NeedResource { get; set; }
 
     [TypeConverter(typeof(DictionaryConverter))]
     [Editor(typeof(DicitonaryEditor), typeof(UITypeEditor))]
-    public Dictionary<string, int> Powers { get; set; }
-
+    public Dictionary<string, int> Abilities { get; set; }
     public string[] Tags { get; set; }
     public string[] SkillList { get; set; }
     public string[] StateList { get; set; }
+
 
     public string[] DeleteCondition { get; set; }
 

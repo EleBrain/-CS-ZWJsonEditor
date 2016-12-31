@@ -4,8 +4,7 @@ using System.Drawing.Design;
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class Data {
 
-    public string Name { get; set; }
-
+    public string Name { get; set; }  
 
     [Editor(typeof(ColorEditor), typeof(UITypeEditor))]
     public string ColorStr { get; set; }

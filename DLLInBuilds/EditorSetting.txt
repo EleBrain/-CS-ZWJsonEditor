@@ -1,0 +1,4 @@
+{
+  "$type": "EditorSettingData, UnitEditorIn",
+  "IsAutoSave": false
+}

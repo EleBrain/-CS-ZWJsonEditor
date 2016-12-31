@@ -3,25 +3,18 @@
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class ConditionMaterial {
 
-    public string Target { get; set; }
+    public string Calc1 { get; set; }
+    //参照する値
+    public string Calc2 { get; set; }
 
     //比較方法
-    public ComparisonType TargetComparison { get; set; }
-    public ComparisonType CountComparison { get; set; }
-
-    //参照する値
-    public string Calc { get; set; }
-
-    public int NeedCount { get; set; }
-
+    public ComparisonType Comparison { get; set; }
 
     public ConditionMaterial() { }
-    public ConditionMaterial(string target, ComparisonType targetComp, string calc, int needCount,ComparisonType countComp) {
-        Target = target;
-        TargetComparison = targetComp;
-        Calc = calc;
-        NeedCount = needCount;
-        CountComparison = countComp;
+    public ConditionMaterial(string calc1, string calc2, ComparisonType targetComp) {
+        Calc1 = calc1;
+        Calc2 = calc2;
+        Comparison = targetComp;
     }
 }
 
@@ -34,7 +27,7 @@ public enum ConditionUnitTargetType {
 }
 public enum ConditionValueTargetType {
     None,
-    Power,
+    Ability,
     Tag,
     Skill,
     State,
