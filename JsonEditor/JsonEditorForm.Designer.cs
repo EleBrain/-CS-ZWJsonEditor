@@ -121,8 +121,8 @@
             // tsmiAutoSave
             // 
             this.tsmiAutoSave.Name = "tsmiAutoSave";
-            this.tsmiAutoSave.Size = new System.Drawing.Size(166, 22);
-            this.tsmiAutoSave.Text = "自動バックアップ(&B)";
+            this.tsmiAutoSave.Size = new System.Drawing.Size(173, 22);
+            this.tsmiAutoSave.Text = "終了時自動保存(&B)";
             this.tsmiAutoSave.Click += new System.EventHandler(this.tsmiAutoSave_Click);
             // 
             // tsmiHelp
@@ -170,7 +170,7 @@
             this.Name = "JsonEditorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);    
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

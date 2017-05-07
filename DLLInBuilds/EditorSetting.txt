@@ -1,4 +1,4 @@
 {
-  "$type": "EditorSettingData, UnitEditorIn",
+  "$type": "EditorSettingData, CalcEditorIn",
   "IsAutoSave": false
 }

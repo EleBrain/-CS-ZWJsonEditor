@@ -2,6 +2,8 @@
 
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class Data {
+
+    public string ID { get; set; }
     public string Name { get; set; }
 
     //イメージ画像のインデックス
@@ -24,8 +26,9 @@ public class Data {
         Prodacts = prodacts;
         MoveCostIndex = moveCostIndex;
     }
+
     public override string ToString() {
-        return Name;
+        return ID;
     }
 
 }

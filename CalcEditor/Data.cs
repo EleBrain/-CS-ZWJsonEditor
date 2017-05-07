@@ -1,20 +1,18 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.Drawing.Design;
+using System.ComponentModel;
 
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class Data {
-
     public string Name { get; set; }
-
-    public string Summary { get; set; }
-
-    public string[] Formula { get; set; }
+    public int Number { get; set; }
+    public CalcRootType RootType { get; set; }
+    public CalcDataNumber Child1 { get; set; } = new CalcDataNumber();
+    public CalcDataNumber Child2 { get; set; } = new CalcDataNumber();
+    public CalcDataTogether TogeterData { get; set; } = new CalcDataTogether();
 
     public Data() { }
-    public Data(string name, string summary, string[] formula) {
-        Name = name;
-        Summary = summary;
-        Formula = formula;
-    }
+
     public override string ToString() {
         return Name;
     }

@@ -3,8 +3,9 @@
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class Data {
 
+    //名前
     public string Name { get; set; }
-
+    //概要
     public string Summary { get; set; }
 
     //いつ回復するか
@@ -13,7 +14,7 @@ public class Data {
     //ユニットの画像の色を変えるか　または画像を追加するか
     public StateEffectType Effect { get; set; }
 
-    //右上か左上に表示するマークのインデックス コレクションのインデックスと同じでいいか
+    //右上か左上に表示するマークのインデックス
     public int SpriteNumber { get; set; }
     //色を変える                           
     public string ColorStr { get; set; }

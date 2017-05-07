@@ -22,12 +22,15 @@ public partial class JsonEditorForm<T> : Form {
         //確認する
         if (MessageBox.Show("現在のデータは破棄されます。\r\nよろしいですか？", "新規作成", MessageBoxButtons.OKCancel) == DialogResult.OK) {
             Datalist = new BaseDataList<T>();
+            propertyGrid1.SelectedObject = Datalist;
+            propertyGrid1.Refresh();
         }
     }
     private void tsmiSave_Click(object sender, EventArgs e) {
         //エラー処理を追加する
         //ここで上書きできるファイルがあるか判別している
         if (saveFileDialog1.FileName == "") {
+            saveFileDialog1.FileName = FileName + ".dat";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
                 System.IO.File.WriteAllText(saveFileDialog1.FileName, GetJson());
             }
@@ -88,6 +91,8 @@ public partial class JsonEditorForm<T> : Form {
 
         SettingLoad();
         DefaultLoad();
+        Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+
     }
 
     private void DefaultLoad() {
@@ -105,8 +110,7 @@ public partial class JsonEditorForm<T> : Form {
                 string settingText = System.IO.File.ReadAllText(SettingFileName);
                 EditorSettingData setting = JsonConvert.DeserializeObject<EditorSettingData>(settingText);
                 tsmiAutoSave.Checked = setting.IsAutoSave;
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 throw;
             }
         }
@@ -117,9 +121,9 @@ public partial class JsonEditorForm<T> : Form {
     private string GetJson() {
         //エラー処理を追加する
         if (Datalist == null || Datalist.Datas == null) return "";
-        JsonSerializerSettings setting = new JsonSerializerSettings();
-        setting.TypeNameHandling = TypeNameHandling.All;
-
+        JsonSerializerSettings setting = new JsonSerializerSettings() {
+            TypeNameHandling = TypeNameHandling.All
+        };
         return JsonConvert.SerializeObject(Datalist.Datas, Formatting.Indented, setting);
     }
 
@@ -131,12 +135,10 @@ public partial class JsonEditorForm<T> : Form {
             Datalist.Datas = JsonConvert.DeserializeObject<T[]>(json);
             propertyGrid1.Refresh();
             propertyGrid1.ExpandAllGridItems();
-        }
-        catch (Exception) {
+        } catch (Exception) {
             MessageBox.Show("jsonからの変換に失敗しました。");
         }
     }
-
 
 
     private void AutoBackUp() {
@@ -149,8 +151,9 @@ public partial class JsonEditorForm<T> : Form {
 
     private void SettingDataSave() {
         //セッティングファイルに設定を保存
-        JsonSerializerSettings setting = new JsonSerializerSettings();
-        setting.TypeNameHandling = TypeNameHandling.All;
+        JsonSerializerSettings setting = new JsonSerializerSettings() {
+            TypeNameHandling = TypeNameHandling.All
+        };
         System.IO.File.WriteAllText(SettingFileName,
             JsonConvert.SerializeObject(new EditorSettingData(tsmiAutoSave.Checked), Formatting.Indented, setting));
     }

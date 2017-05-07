@@ -1,0 +1,72 @@
+{
+  "$type": "Data[], RangeEditor",
+  "$values": [
+    {
+      "$type": "Data, RangeEditor",
+      "Name": "ナイトの動き",
+      "Materials": {
+        "$type": "RangeMaterial[], RangeEditor",
+        "$values": [
+          {
+            "$type": "RangeMaterial, RangeEditor",
+            "RType": 0,
+            "X": -1,
+            "Y": 2
+          },
+          {
+            "$type": "RangeMaterial, RangeEditor",
+            "RType": 0,
+            "X": 1,
+            "Y": 2
+          },
+          {
+            "$type": "RangeMaterial, RangeEditor",
+            "RType": 0,
+            "X": 2,
+            "Y": -1
+          },
+          {
+            "$type": "RangeMaterial, RangeEditor",
+            "RType": 0,
+            "X": 2,
+            "Y": 1
+          },
+          {
+            "$type": "RangeMaterial, RangeEditor",
+            "RType": 0,
+            "X": -1,
+            "Y": -2
+          },
+          {
+            "$type": "RangeMaterial, RangeEditor",
+            "RType": 0,
+            "X": 1,
+            "Y": -2
+          },
+          {
+            "$type": "RangeMaterial, RangeEditor",
+            "RType": 0,
+            "X": -2,
+            "Y": -1
+          },
+          {
+            "$type": "RangeMaterial, RangeEditor",
+            "RType": 0,
+            "X": -2,
+            "Y": 1
+          }
+        ]
+      },
+      "Conditions": {
+        "$type": "RangeCondition[], RangeEditor",
+        "$values": [
+          {
+            "$type": "RangeCondition, RangeEditor",
+            "ConditionName": "自分の駒があれば",
+            "CostCalcName": "-9"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -3,18 +3,23 @@
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class Data {
 
+    //名前
     public string Name { get; set; }
-
+    //概要
     public string Summary { get; set; }
-
+    //スキルの効果のタイプ
     public SkillType SType { get; set; }
+    //consditionの名前 そのスキル効果を発動する条件
     public string[] Conditions { get; set; }
+    //移動の場合は参照する移動力の名前
     public string Target { get; set; }
-
+    //の計算式の名前             calc name
     public string Formura { get; set; }
+    //最大値の計算式の名前    calc name
     public string MaxValue { get; set; }
+    //最小値の計算式の名前    calc   name
     public string MinValue { get; set; }
-
+    //効果の範囲 range name
     public string Range { get; set; }
 
     public Data() { }
@@ -37,6 +42,7 @@ public class Data {
 
 
 public enum SkillType {
+    VariableSave,    //変数に保存する
     PowerChange,    //能力変化
     Delete,         //消滅
     Move,           //移動
