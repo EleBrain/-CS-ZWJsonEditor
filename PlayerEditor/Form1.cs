@@ -6,7 +6,7 @@ namespace PlayerEditor {
             FileTypeName = "勢力データ";  //ファイルの名前の説明
             FileName = "PowerData";            //ファイルの名前
             InitializeComponent();
-            init();
+            Init();
         }
     }
 }

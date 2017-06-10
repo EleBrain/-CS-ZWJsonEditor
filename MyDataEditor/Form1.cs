@@ -4,7 +4,7 @@
             FileTypeName = "マイデータ";  //ファイルの名前の説明
             FileName = "MyData";            //ファイルの名前
             InitializeComponent();
-            init();
+            Init();
         }
     }
 }

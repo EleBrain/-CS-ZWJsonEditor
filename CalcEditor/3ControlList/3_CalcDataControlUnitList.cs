@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
-public class CalcDataControlUnitList {
+public class CalcDataControlUnitList : CalcDataControlListBase {
     public CalcUnitValueType UnitValueType { get; set; }
     public CalcControlType ControlType { get; set; }
     public string TargetName { get; set; }

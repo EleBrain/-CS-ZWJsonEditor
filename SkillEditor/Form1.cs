@@ -6,7 +6,7 @@ namespace SkillEditor {
             FileTypeName = "スキルデータ";  //ファイルの名前の説明
             FileName = "SkillData";            //ファイルの名前
             InitializeComponent();
-            init();
+            Init();
         }
     }
 }

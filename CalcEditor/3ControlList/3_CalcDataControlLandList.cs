@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
-public class CalcDataControlLandList {
+public class CalcDataControlLandList : CalcDataControlListBase {
 
     public CalcLandValueType ValueType { get; set; }
 

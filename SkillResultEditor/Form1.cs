@@ -5,7 +5,7 @@ namespace SkillResultEditor {
             FileTypeName = "スキル効果データ";  //ファイルの名前の説明
             FileName = "SkillResult";            //ファイルの名前
             InitializeComponent();
-            init();
+            Init();
         }
     }
 }

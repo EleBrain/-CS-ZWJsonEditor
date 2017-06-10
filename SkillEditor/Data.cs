@@ -11,28 +11,22 @@ public class Data {
     public string Summary { get; set; }
     //イメージの番号
     public int SpriteNumber { get; set; }
-    //条件   ConditionのName
+    //条件
     public string[] Conditions { get; set; }
-    //効果   ResultのName
+    //効果
     public string[] Result { get; set; }
-    //範囲  RangeのName
+    //範囲
     public string Range { get; set; }
+    //範囲条件
+    public string[] RangeConditions { get; set; }
+    //選択タイプ
+    public SkillSelectType SelectType { get; set; }
+    //選択タイプが移動なら移動データを参照する
+    public string Move { get; set; }
     //いつ発動するか
     public TimingType Timing { get; set; }
 
-
     public Data() { }
-
-    public Data(string iD, string name, string summary, int spriteNumber, string[] conditions, string[] result, string range, TimingType timing) {
-        ID = iD;
-        Name = name;
-        Summary = summary;
-        SpriteNumber = spriteNumber;
-        Conditions = conditions;
-        Result = result;
-        Range = range;
-        Timing = timing;
-    }
 
     public override string ToString() {
         return ID;

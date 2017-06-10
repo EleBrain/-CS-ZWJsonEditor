@@ -7,7 +7,6 @@ public class Data {
     public string Name { get; set; }
 
     public RangeMaterial[] Materials { get; set; }
-    public RangeCondition[] Conditions { get; set; }
 
     public Data() { }
 

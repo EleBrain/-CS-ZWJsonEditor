@@ -15,7 +15,6 @@ public partial class JsonEditorForm<T> : Form {
     #region "FormEvents"
     public JsonEditorForm() {
         InitializeComponent();
-        init();
     }
 
     private void tsmiNew_Click(object sender, EventArgs e) {
@@ -81,7 +80,7 @@ public partial class JsonEditorForm<T> : Form {
     #endregion
 
     /// <summary>listのインスタンス化　ファイルダイアログのフィルター変更 </summary>
-    protected void init() {
+    protected void Init() {
         propertyGrid1.SelectedObject = Datalist;
         saveFileDialog1.InitialDirectory = Application.StartupPath;
         openFileDialog1.InitialDirectory = Application.StartupPath;
@@ -92,7 +91,6 @@ public partial class JsonEditorForm<T> : Form {
         SettingLoad();
         DefaultLoad();
         Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-
     }
 
     private void DefaultLoad() {
@@ -132,7 +130,10 @@ public partial class JsonEditorForm<T> : Form {
     private void LoadData(string json) {
         //エラー処理を追加する
         try {
-            Datalist.Datas = JsonConvert.DeserializeObject<T[]>(json);
+            JsonSerializerSettings setting = new JsonSerializerSettings() {
+                TypeNameHandling = TypeNameHandling.All
+            };
+            Datalist.Datas = JsonConvert.DeserializeObject<T[]>(json, setting);
             propertyGrid1.Refresh();
             propertyGrid1.ExpandAllGridItems();
         } catch (Exception) {

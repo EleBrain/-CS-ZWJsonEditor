@@ -6,7 +6,7 @@ namespace LandEditor {
             FileTypeName = "地形データ";  //ファイルの名前の説明
             FileName = "LandData";            //ファイルの名前
             InitializeComponent();
-            init();
+            Init();
         }
     }
 }

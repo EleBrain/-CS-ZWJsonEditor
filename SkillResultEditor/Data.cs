@@ -42,7 +42,6 @@ public class Data {
 
 
 public enum SkillType {
-    VariableSave,    //変数に保存する
     PowerChange,    //能力変化
     Delete,         //消滅
     Move,           //移動

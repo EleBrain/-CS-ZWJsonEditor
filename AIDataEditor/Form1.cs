@@ -4,7 +4,7 @@
             FileTypeName = "AIデータ";  //ファイルの名前の説明
             FileName = "AIData";            //ファイルの名前
             InitializeComponent();
-            init();
+            Init();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace BasicEditor {
             FileTypeName = "基本データ";  //ファイルの名前の説明
             FileName = "BasicData";           //ファイルの名前
             InitializeComponent();
-            init();
+            Init();
         }
 
         private void button1_Click(object sender, EventArgs e) {

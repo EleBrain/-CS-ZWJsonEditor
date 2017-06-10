@@ -6,7 +6,7 @@ namespace MoveDataEditor {
             FileTypeName = "移動タイプデータ";  //ファイルの名前の説明
             FileName = "MoveData";            //ファイルの名前
             InitializeComponent();
-            init();
+            Init();
         }
     }
 }

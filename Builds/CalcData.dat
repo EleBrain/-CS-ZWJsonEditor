@@ -1,0 +1,146 @@
+{
+  "$type": "Data[], CalcEditor",
+  "$values": [
+    {
+      "$type": "Data, CalcEditor",
+      "Name": "test",
+      "Number": 0,
+      "RootType": 0,
+      "Child1": {
+        "$type": "CalcDataNumber, CalcEditor",
+        "Number": 0,
+        "RootType": 0,
+        "Child1": null,
+        "Child2": null,
+        "TogeterData": {
+          "$type": "CalcDataTogether, CalcEditor",
+          "TogetherType": 0,
+          "IntListData": {
+            "$type": "CalcDataIntList, CalcEditor",
+            "ListTargetType": 0,
+            "ControlListData": null
+          }
+        }
+      },
+      "Child2": {
+        "$type": "CalcDataNumber, CalcEditor",
+        "Number": 0,
+        "RootType": 0,
+        "Child1": null,
+        "Child2": null,
+        "TogeterData": {
+          "$type": "CalcDataTogether, CalcEditor",
+          "TogetherType": 0,
+          "IntListData": {
+            "$type": "CalcDataIntList, CalcEditor",
+            "ListTargetType": 0,
+            "ControlListData": null
+          }
+        }
+      },
+      "TogeterData": {
+        "$type": "CalcDataTogether, CalcEditor",
+        "TogetherType": 0,
+        "IntListData": {
+          "$type": "CalcDataIntList, CalcEditor",
+          "ListTargetType": 0,
+          "ControlListData": null
+        }
+      }
+    },
+    {
+      "$type": "Data, CalcEditor",
+      "Name": null,
+      "Number": 0,
+      "RootType": 0,
+      "Child1": {
+        "$type": "CalcDataNumber, CalcEditor",
+        "Number": 0,
+        "RootType": 0,
+        "Child1": null,
+        "Child2": null,
+        "TogeterData": {
+          "$type": "CalcDataTogether, CalcEditor",
+          "TogetherType": 0,
+          "IntListData": {
+            "$type": "CalcDataIntList, CalcEditor",
+            "ListTargetType": 0,
+            "ControlListData": null
+          }
+        }
+      },
+      "Child2": {
+        "$type": "CalcDataNumber, CalcEditor",
+        "Number": 0,
+        "RootType": 0,
+        "Child1": null,
+        "Child2": null,
+        "TogeterData": {
+          "$type": "CalcDataTogether, CalcEditor",
+          "TogetherType": 0,
+          "IntListData": {
+            "$type": "CalcDataIntList, CalcEditor",
+            "ListTargetType": 0,
+            "ControlListData": null
+          }
+        }
+      },
+      "TogeterData": {
+        "$type": "CalcDataTogether, CalcEditor",
+        "TogetherType": 0,
+        "IntListData": {
+          "$type": "CalcDataIntList, CalcEditor",
+          "ListTargetType": 0,
+          "ControlListData": null
+        }
+      }
+    },
+    {
+      "$type": "Data, CalcEditor",
+      "Name": null,
+      "Number": 0,
+      "RootType": 0,
+      "Child1": {
+        "$type": "CalcDataNumber, CalcEditor",
+        "Number": 0,
+        "RootType": 0,
+        "Child1": null,
+        "Child2": null,
+        "TogeterData": {
+          "$type": "CalcDataTogether, CalcEditor",
+          "TogetherType": 0,
+          "IntListData": {
+            "$type": "CalcDataIntList, CalcEditor",
+            "ListTargetType": 0,
+            "ControlListData": null
+          }
+        }
+      },
+      "Child2": {
+        "$type": "CalcDataNumber, CalcEditor",
+        "Number": 0,
+        "RootType": 0,
+        "Child1": null,
+        "Child2": null,
+        "TogeterData": {
+          "$type": "CalcDataTogether, CalcEditor",
+          "TogetherType": 0,
+          "IntListData": {
+            "$type": "CalcDataIntList, CalcEditor",
+            "ListTargetType": 0,
+            "ControlListData": null
+          }
+        }
+      },
+      "TogeterData": {
+        "$type": "CalcDataTogether, CalcEditor",
+        "TogetherType": 0,
+        "IntListData": {
+          "$type": "CalcDataIntList, CalcEditor",
+          "ListTargetType": 0,
+          "ControlListData": null
+        }
+      }
+    }
+  ]
+}

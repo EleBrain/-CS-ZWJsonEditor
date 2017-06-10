@@ -47,6 +47,10 @@ public enum CalcUnitValueType {
     Count,
     X,
     Y,
+    DistanceX,
+    DistanceY,
+    Manhattan,    //◆
+    Chebyshev,     //■
 }
 public enum CalcLandValueType {
     Count,
