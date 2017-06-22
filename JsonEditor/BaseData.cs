@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing.Design;
-
-[TypeConverter(typeof(SerializableExpandableObjectConverter))]
+﻿
 public class BaseData {
 
     public string Name { get; set; }

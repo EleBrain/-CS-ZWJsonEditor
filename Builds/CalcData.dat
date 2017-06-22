@@ -1,145 +1,51 @@
 {
-  "$type": "Data[], CalcEditor",
+  "$type": "CalcData.CalcDataRootBase[], ZWData",
   "$values": [
     {
-      "$type": "Data, CalcEditor",
-      "Name": "test",
-      "Number": 0,
-      "RootType": 0,
-      "Child1": {
-        "$type": "CalcDataNumber, CalcEditor",
-        "Number": 0,
-        "RootType": 0,
-        "Child1": null,
-        "Child2": null,
-        "TogeterData": {
-          "$type": "CalcDataTogether, CalcEditor",
-          "TogetherType": 0,
-          "IntListData": {
-            "$type": "CalcDataIntList, CalcEditor",
-            "ListTargetType": 0,
-            "ControlListData": null
+      "$type": "CalcData.CalcDataRootBase, ZWData",
+      "RootType": 1,
+      "IntList": {
+        "$type": "CalcData.CalcDataCalc, ZWData",
+        "Child1": {
+          "$type": "CalcData.CalcDataChild, ZWData",
+          "RootType": 0,
+          "IntList": {
+            "$type": "CalcData.CalcDataNumber, ZWData",
+            "Number": 0
           }
-        }
-      },
-      "Child2": {
-        "$type": "CalcDataNumber, CalcEditor",
-        "Number": 0,
-        "RootType": 0,
-        "Child1": null,
-        "Child2": null,
-        "TogeterData": {
-          "$type": "CalcDataTogether, CalcEditor",
-          "TogetherType": 0,
-          "IntListData": {
-            "$type": "CalcDataIntList, CalcEditor",
-            "ListTargetType": 0,
-            "ControlListData": null
+        },
+        "Child2": {
+          "$type": "CalcData.CalcDataChild, ZWData",
+          "RootType": 0,
+          "IntList": {
+            "$type": "CalcData.CalcDataNumber, ZWData",
+            "Number": 0
           }
-        }
-      },
-      "TogeterData": {
-        "$type": "CalcDataTogether, CalcEditor",
-        "TogetherType": 0,
-        "IntListData": {
-          "$type": "CalcDataIntList, CalcEditor",
-          "ListTargetType": 0,
-          "ControlListData": null
         }
       }
     },
     {
-      "$type": "Data, CalcEditor",
-      "Name": null,
-      "Number": 0,
+      "$type": "CalcData.CalcDataRootBase, ZWData",
       "RootType": 0,
-      "Child1": {
-        "$type": "CalcDataNumber, CalcEditor",
-        "Number": 0,
-        "RootType": 0,
-        "Child1": null,
-        "Child2": null,
-        "TogeterData": {
-          "$type": "CalcDataTogether, CalcEditor",
-          "TogetherType": 0,
-          "IntListData": {
-            "$type": "CalcDataIntList, CalcEditor",
-            "ListTargetType": 0,
-            "ControlListData": null
-          }
-        }
-      },
-      "Child2": {
-        "$type": "CalcDataNumber, CalcEditor",
-        "Number": 0,
-        "RootType": 0,
-        "Child1": null,
-        "Child2": null,
-        "TogeterData": {
-          "$type": "CalcDataTogether, CalcEditor",
-          "TogetherType": 0,
-          "IntListData": {
-            "$type": "CalcDataIntList, CalcEditor",
-            "ListTargetType": 0,
-            "ControlListData": null
-          }
-        }
-      },
-      "TogeterData": {
-        "$type": "CalcDataTogether, CalcEditor",
-        "TogetherType": 0,
-        "IntListData": {
-          "$type": "CalcDataIntList, CalcEditor",
-          "ListTargetType": 0,
-          "ControlListData": null
-        }
+      "IntList": {
+        "$type": "CalcData.CalcDataNumber, ZWData",
+        "Number": 0
       }
     },
     {
-      "$type": "Data, CalcEditor",
-      "Name": null,
-      "Number": 0,
+      "$type": "CalcData.CalcDataRootBase, ZWData",
       "RootType": 0,
-      "Child1": {
-        "$type": "CalcDataNumber, CalcEditor",
-        "Number": 0,
-        "RootType": 0,
-        "Child1": null,
-        "Child2": null,
-        "TogeterData": {
-          "$type": "CalcDataTogether, CalcEditor",
-          "TogetherType": 0,
-          "IntListData": {
-            "$type": "CalcDataIntList, CalcEditor",
-            "ListTargetType": 0,
-            "ControlListData": null
-          }
-        }
-      },
-      "Child2": {
-        "$type": "CalcDataNumber, CalcEditor",
-        "Number": 0,
-        "RootType": 0,
-        "Child1": null,
-        "Child2": null,
-        "TogeterData": {
-          "$type": "CalcDataTogether, CalcEditor",
-          "TogetherType": 0,
-          "IntListData": {
-            "$type": "CalcDataIntList, CalcEditor",
-            "ListTargetType": 0,
-            "ControlListData": null
-          }
-        }
-      },
-      "TogeterData": {
-        "$type": "CalcDataTogether, CalcEditor",
-        "TogetherType": 0,
-        "IntListData": {
-          "$type": "CalcDataIntList, CalcEditor",
-          "ListTargetType": 0,
-          "ControlListData": null
-        }
+      "IntList": {
+        "$type": "CalcData.CalcDataNumber, ZWData",
+        "Number": 0
+      }
+    },
+    {
+      "$type": "CalcData.CalcDataRootBase, ZWData",
+      "RootType": 0,
+      "IntList": {
+        "$type": "CalcData.CalcDataNumber, ZWData",
+        "Number": 0
       }
     }
   ]

@@ -2,17 +2,17 @@
 using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using BasicData;
 
 namespace BasicEditor {
     public partial class Form2 : Form {
-        private Data Data;
-
+        private BasicData.BasicData Data;
 
         public Form2() {
             InitializeComponent();
         }
 
-        public void ShowForm(Data data) {
+        public void ShowForm(BasicData.BasicData data) {
             Data = data;
             ShowDialog();
 
@@ -29,8 +29,7 @@ namespace BasicEditor {
             Rootobject v;
             try {
                 v = JsonConvert.DeserializeObject<Rootobject>(textBox1.Text);
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 MessageBox.Show("変換に失敗しました");
                 return;
             }

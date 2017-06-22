@@ -9,6 +9,6 @@ static class Program {
     static void Main() {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new FreeMakeForm<Data>());
+        Application.Run(new FreeMakeForm<FreeMakeData.FreeMakeData>());
     }
 }

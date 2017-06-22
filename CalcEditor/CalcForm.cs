@@ -1,24 +1,30 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using CalcData;
 
 namespace CalcEditor {
-    public partial class CalcForm : Form1<Data> {
+    public partial class CalcForm : Form1<CalcDataRootBase> {
 
         public CalcForm() {
             InitializeComponent();
         }
 
         private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e) {
+            if (e.OldValue == null) return;
+            if (e.ChangedItem.Parent.Value.ToString() == "" || e.OldValue.ToString() == "") return;
             ChangeNumberTarget(e);
-            ChangeListTarget(e);
+            propertyGrid1.Refresh();
         }
 
         private static void ChangeNumberTarget(PropertyValueChangedEventArgs e) {
-            if (!(e.ChangedItem.Parent.Value is CalcDataNumberBase)) return;
+            if (!(e.ChangedItem.Parent.Value is CalcDataRootBase)) return;
 
-            CalcDataNumberBase parent = (CalcDataNumberBase)e.ChangedItem.Parent.Value;
+            CalcDataRootBase parent = (CalcDataRootBase)e.ChangedItem.Parent.Value;
+            if (e.OldValue is CalcRootType && (CalcRootType)e.OldValue == parent.RootType) {
+                return;
+            }
             switch (parent.RootType) {
                 case CalcRootType.Number:
+                    parent.IntList = new CalcDataNumber();
                     break;
                 case CalcRootType.Addition:
                 case CalcRootType.Subtraction:
@@ -26,42 +32,20 @@ namespace CalcEditor {
                 case CalcRootType.Division:
                 case CalcRootType.Remainder:
                 case CalcRootType.Random:
-                    if (parent.Child1 == null) {
-                        parent.Child1 = new CalcDataNumber();
-                    }
-                    if (parent.Child2 == null) {
-                        parent.Child2 = new CalcDataNumber();
-                    }
+                    parent.IntList = new CalcDataCalc();
                     break;
-                case CalcRootType.Together:
-                    if (parent.TogeterData == null) {
-                        parent.TogeterData = new CalcDataTogether();
-                    }
+                case CalcRootType.Unit:
+                    parent.IntList = new CalcDataUnitList();
                     break;
-                default:
+                case CalcRootType.Land:
+                    parent.IntList = new CalcDataLandList();
                     break;
-            }
-        }
-        private static void ChangeListTarget(PropertyValueChangedEventArgs e) {
-            Console.WriteLine(e.ChangedItem.Parent.Value);
-            if (!(e.ChangedItem.Parent.Value is CalcDataIntList)) return;
-            
-            CalcDataIntList parent = (CalcDataIntList)e.ChangedItem.Parent.Value;
-            switch (parent.ListTargetType) {
-                case CalcListTargetType.Unit:
-                    parent.ControlListData = new CalcDataControlUnitList();
-                    break;
-                case CalcListTargetType.Land:
-                    parent.ControlListData = new CalcDataControlLandList();
-                    break;
-                case CalcListTargetType.Player:
-                    parent.ControlListData = new CalcDataPlayerList();
+                case CalcRootType.Player:
+                    parent.IntList = new CalcDataPlayerList();
                     break;
                 default:
                     break;
             }
         }
-
-
     }
 }

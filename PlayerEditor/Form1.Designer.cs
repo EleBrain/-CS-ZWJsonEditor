@@ -1,4 +1,4 @@
-﻿namespace PlayerEditor {
+﻿namespace PowerEditor {
     partial class Form1<T> {
         /// <summary>
         /// 必要なデザイナー変数です。
