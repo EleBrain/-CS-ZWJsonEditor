@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 public partial class JsonEditorForm<T> : Form {
 
@@ -119,10 +120,7 @@ public partial class JsonEditorForm<T> : Form {
     private string GetJson() {
         //エラー処理を追加する
         if (Datalist == null || Datalist.Datas == null) return "";
-        JsonSerializerSettings setting = new JsonSerializerSettings() {
-            TypeNameHandling = TypeNameHandling.All
-        };
-        return JsonConvert.SerializeObject(Datalist.Datas, Formatting.Indented, setting);
+        return JsonConvert.SerializeObject(Datalist.Datas, Formatting.Indented, new StringEnumConverter());
     }
 
     /// <summary>読み込んだ文字列をフォームに反映</summary>
@@ -130,10 +128,7 @@ public partial class JsonEditorForm<T> : Form {
     private void LoadData(string json) {
         //エラー処理を追加する
         try {
-            JsonSerializerSettings setting = new JsonSerializerSettings() {
-                TypeNameHandling = TypeNameHandling.All
-            };
-            Datalist.Datas = JsonConvert.DeserializeObject<T[]>(json, setting);
+            Datalist.Datas = JsonConvert.DeserializeObject<T[]>(json);
             propertyGrid1.Refresh();
             propertyGrid1.ExpandAllGridItems();
         } catch (Exception) {

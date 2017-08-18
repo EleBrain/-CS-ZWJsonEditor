@@ -10,7 +10,7 @@ namespace LandEditor {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1<LandData.LandData>());
+            Application.Run(new Form1<LandData>());
         }
     }
 }

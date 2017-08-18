@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel;
-
 [TypeConverter(typeof(ExpandableObjectConverter))]
 public class FreeMakeMaterial {
 
     public string Name { get; set; }
     public FMMaterialType MaterialType { get; set; }
     public FMAddRemoveType AddType { get; set; }
-    public int value { get; set; }
+    public int Value { get; set; }
 
     public FreeMakeMaterial() { }
 
@@ -21,7 +20,6 @@ public enum FMMaterialType {
     Image,
     Skill,
     State,
-    MoveType,
     Condition,
 }
 public enum FMAddRemoveType {

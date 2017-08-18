@@ -10,7 +10,7 @@ namespace PowerEditor {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1<PowerData.PowerData>());
+            Application.Run(new Form1<PowerData>());
         }
     }
 }

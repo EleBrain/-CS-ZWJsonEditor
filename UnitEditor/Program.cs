@@ -10,7 +10,7 @@ namespace UnitEditor {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1<UnitData.UnitData>());
+            Application.Run(new Form1<UnitData>());
         }
     }
 }

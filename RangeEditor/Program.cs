@@ -10,7 +10,7 @@ namespace RangeEditor {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1<RangeData.RangeData>());
+            Application.Run(new Form1<RangeData>());
         }
     }
 }

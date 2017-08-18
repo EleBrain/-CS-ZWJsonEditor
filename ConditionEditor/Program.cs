@@ -9,7 +9,7 @@ static class Program {
     static void Main() {
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new Form1<ConditionData.ConditionData>());
+        Application.Run(new Form1<ConditionData>());
     }
 }
 

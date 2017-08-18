@@ -2,17 +2,16 @@
 using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using BasicData;
 
 namespace BasicEditor {
     public partial class Form2 : Form {
-        private BasicData.BasicData Data;
+        private BasicData Data;
 
         public Form2() {
             InitializeComponent();
         }
 
-        public void ShowForm(BasicData.BasicData data) {
+        public void ShowForm(BasicData data) {
             Data = data;
             ShowDialog();
 

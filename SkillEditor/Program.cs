@@ -10,7 +10,7 @@ namespace SkillEditor {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1<SkillData.SkillData>());
+            Application.Run(new Form1<SkillData>());
         }
     }
 }
