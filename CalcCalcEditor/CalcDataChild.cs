@@ -1,5 +1,7 @@
-﻿public class CalcDataChild {
-    public string Name { get; set; }
+﻿using System.ComponentModel;
+
+[TypeConverter(typeof(SerializableExpandableObjectConverter))]
+public class CalcDataChild {
     public CalcRootType RootType { get; set; }
     public string ChildName { get; set; }
 

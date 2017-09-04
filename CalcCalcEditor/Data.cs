@@ -6,8 +6,8 @@ using System.Drawing.Design;
 public class Data {
 
     public string Name { get; set; }
-    public CalcDataChild Child1 { get; set; }
-    public CalcDataChild Child2 { get; set; }
+    public CalcDataChild Child1 { get; set; } = new CalcDataChild();
+    public CalcDataChild Child2 { get; set; } = new CalcDataChild();
 
     public Data() { }
 

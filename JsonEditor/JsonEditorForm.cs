@@ -147,11 +147,8 @@ public partial class JsonEditorForm<T> : Form {
 
     private void SettingDataSave() {
         //セッティングファイルに設定を保存
-        JsonSerializerSettings setting = new JsonSerializerSettings() {
-            TypeNameHandling = TypeNameHandling.All
-        };
         System.IO.File.WriteAllText(SettingFileName,
-            JsonConvert.SerializeObject(new EditorSettingData(tsmiAutoSave.Checked), Formatting.Indented, setting));
+            JsonConvert.SerializeObject(new EditorSettingData(tsmiAutoSave.Checked), Formatting.Indented));
     }
 
 

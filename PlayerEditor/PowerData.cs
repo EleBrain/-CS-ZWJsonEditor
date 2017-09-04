@@ -9,25 +9,17 @@ public class PowerData {
     [Editor(typeof(ColorEditor), typeof(UITypeEditor))]
     public string ColorStr { get; set; }
 
-    public int[] KnownUnits { get; set; }
+    public ControlType ControlType { get; set; }
+    public int AINumber { get; set; }
 
+    public int[] KnownUnits { get; set; }
     public int[] Resources { get; set; }
 
     public string[] WinConditions { get; set; }
     public string[] LoseConditions { get; set; }
-    public ControlType Control { get; set; }
+
 
     public PowerData() { }
-    public PowerData(string name, string colorStr, int[] resources,
-        int[] knownUnits, string[] winConditions, string[] loseConditions, ControlType control) {
-        Name = name;
-        ColorStr = colorStr;
-        KnownUnits = knownUnits;
-        Resources = resources;
-        WinConditions = winConditions;
-        LoseConditions = loseConditions;
-        Control = control;
-    }
     public override string ToString() {
         return Name;
     }
@@ -36,6 +28,8 @@ public class PowerData {
 public enum ControlType {
     None,
     AI,
+    NoneOrAI,
     NoneOrHuman,
-    AIOrHuman
+    AIOrHuman,
+    NoneOrAIOrHuman
 }

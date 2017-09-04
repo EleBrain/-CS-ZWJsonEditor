@@ -22,7 +22,7 @@ public enum CalcTogetherType {
 
 public enum CalcControlType {
     All,
-    MyControll,
+    MyControl,
     NotMine,
     PlayerNumber,
     TeamNumber,

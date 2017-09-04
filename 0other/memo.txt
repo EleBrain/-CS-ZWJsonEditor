@@ -1,7 +1,7 @@
 
 
 if $(ConfigurationName) == Release (
-"C:\Program Files (x86)\Microsoft\ILMerge\ILMerge.exe" /v4 /ndebug /out:"$(SolutionDir)DLLInBuilds\$(ProjectName)$(TargetExt)" "$(OutDir)$(TargetFileName)" "$(OutDir)JsonEditor.exe" "$(OutDir)Newtonsoft.Json.dll" "$(SolutionDir)\ZWData\bin\Release\ZWData.dll"
+"C:\Program Files (x86)\Microsoft\ILMerge\ILMerge.exe" /v4 /ndebug /out:"$(SolutionDir)DLLInBuilds\$(ProjectName)$(TargetExt)" "$(OutDir)$(TargetFileName)" "$(OutDir)JsonEditor.exe" "$(OutDir)Newtonsoft.Json.dll"
 )
 
 
