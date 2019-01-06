@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing.Design;
+﻿using System.ComponentModel;
 
 [TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class Data {

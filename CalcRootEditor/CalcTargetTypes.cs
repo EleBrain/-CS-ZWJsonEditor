@@ -8,7 +8,7 @@
     Random,
     Unit,
     Land,
-    Player,
+    Power,
 }
 
 public enum CalcTogetherType {

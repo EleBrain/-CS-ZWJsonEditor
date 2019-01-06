@@ -13,11 +13,11 @@ public class SkillResultData {
     public string[] Conditions { get; set; }
     //移動の場合は参照する移動力の名前
     public string Target { get; set; }
-    //Targetの計算式の名前             calc name
+    //Targetの計算式の名前　calcRoot name
     public string Formura { get; set; }
-    //最大値の計算式の名前    calc name
+    //最大値の計算式の名前    calcRoot name
     public string MaxValue { get; set; }
-    //最小値の計算式の名前    calc   name
+    //最小値の計算式の名前    calcRoot   name
     public string MinValue { get; set; }
     //効果の範囲 range name
     public string Range { get; set; }
@@ -43,7 +43,8 @@ public class SkillResultData {
 
 public enum SkillType {
     AbilityChange,    //能力変化
-    Delete,         //消滅
+    StateAdd,    //状態追加
+    StateRemove,    //状態削除
     Move,           //移動
     Make,           //メイク
     Summon,         //サモン
@@ -59,6 +60,4 @@ public enum SkillType {
     LandChange,     //地形変化
                     //視界
     Effect,         //特殊エフェクト
-    TurnEnd,         //ターン終了
 }
-

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-[TypeConverter(typeof(ExpandableObjectConverter))]
+[TypeConverter(typeof(SerializableExpandableObjectConverter))]
 public class FreeMakeData {
 
     public string Name { get; set; }

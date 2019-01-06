@@ -7,8 +7,8 @@ public class LandData {
     public string ID { get; set; }
     public string Name { get; set; }
 
-    //イメージ画像のインデックス
-    public int SpriteNumber { get; set; }
+    //イメージ画像の名前
+    public string AnimeName { get; set; }
 
     //移動コストのインデックス
     public int MoveCostIndex { get; set; }
@@ -21,12 +21,6 @@ public class LandData {
     // 起こること スキルにする?
 
     public LandData() { }
-    public LandData(string name, int spriteNumber, int moveCostIndex, int[] prodacts) {
-        Name = name;
-        SpriteNumber = spriteNumber;
-        Prodacts = prodacts;
-        MoveCostIndex = moveCostIndex;
-    }
 
     public override string ToString() {
         return ID;

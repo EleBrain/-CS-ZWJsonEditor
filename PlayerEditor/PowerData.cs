@@ -8,6 +8,7 @@ public class PowerData {
 
     [Editor(typeof(ColorEditor), typeof(UITypeEditor))]
     public string ColorStr { get; set; }
+    public string AnimeName { get; set; }
 
     public ControlType ControlType { get; set; }
     public int AINumber { get; set; }
@@ -17,6 +18,7 @@ public class PowerData {
 
     public string[] WinConditions { get; set; }
     public string[] LoseConditions { get; set; }
+    public string[] OrderEndConditions { get; set; }
 
 
     public PowerData() { }

@@ -10,7 +10,7 @@ namespace AIDataEditor {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1<Data>());
+            Application.Run(new Form1<AIData>());
         }
     }
 }

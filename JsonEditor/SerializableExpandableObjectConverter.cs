@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 
-public class SerializableExpandableObjectConverter :
-   ExpandableObjectConverter {
+public class SerializableExpandableObjectConverter : ExpandableObjectConverter {
 
     public override bool CanConvertTo(ITypeDescriptorContext context, System.Type destinationType) {
         if ((destinationType == typeof(string))) {
